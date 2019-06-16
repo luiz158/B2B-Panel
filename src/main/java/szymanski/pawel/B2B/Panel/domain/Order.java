@@ -1,6 +1,7 @@
 package szymanski.pawel.B2B.Panel.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -10,11 +11,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public Order() {
-    }
-
     @Column(name = "order_number")
     private int orderNumber;
+
+    @OneToMany
+    private List<Product> products;
+
+    public Order() {
+    }
 
     public int getId() {
         return id;
